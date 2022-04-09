@@ -1,20 +1,19 @@
 package tests;
-
+import org.openqa.selenium.*;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import pageObjects.CheckoutPage;
 import pageObjects.HomePage;
 import pageObjects.SearchResultsPage;
 import pageObjects.loginPage;
@@ -37,9 +36,9 @@ public class Additems extends base {
 	{
 		Login l = new Login();
 		
-		//l.loginFlow(driver);
-		loginPage lp = new loginPage(driver);
-		driver.get("https://www.amazon.com/");
+		l.loginFlow(driver);
+	
+		driver.get("https://www.amazon.in/");
 		HomePage hp = new HomePage(driver);
 		hp.searchBox().sendKeys(Keys.chord("Football",Keys.ENTER));
 		SearchResultsPage sp = new SearchResultsPage(driver);
@@ -59,18 +58,30 @@ public class Additems extends base {
 		
 Set<String> s = driver.getWindowHandles();
 Iterator<String> it = s.iterator();
+
+
 it.next();
-for(int j=0;j<s.size();j++)
+while(it.hasNext())
 {
 driver.switchTo().window(it.next());
 
 try {
 	sp.addToCart().click();
 }
-catch (Exception e){
+catch (NoSuchElementException e){
+	
+	System.out.println("Unavailable item");
 	
 }
 	}
+
+
+Checkout co = new Checkout();
+co.checkoutfromcart(driver);
+
+
+
+
 
 	
 	

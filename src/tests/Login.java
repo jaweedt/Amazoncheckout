@@ -27,7 +27,7 @@ public class Login extends base {
 		
 		
 		loginPage lp = new loginPage(driver);
-		driver.get("https://www.amazon.com/");
+		driver.get("https://www.amazon.in/");
 		lp.clickLogin().click();
 		lp.getUsername().sendKeys("jaweed.thahir@outlook.com");
 		lp.clickContinue().click();
