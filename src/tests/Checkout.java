@@ -26,11 +26,13 @@ public class Checkout extends base {
 		cp.clickCheckout().click();
 		cp.entername().sendKeys("Jaweed Thahir");
 		cp.enterMobile().sendKeys("9497375530");
-		cp.enterPostal().sendKeys("560068");
+		cp.enterPostal().clear();
+		cp.enterPostal().sendKeys("673311");
 		cp.enterAddress1().sendKeys("202, BTM STAGE 2");
 		cp.enterAddress2().sendKeys("Bangalore");
-	//	cp.enterAddressType().selectByValue("RES");
-	//	cp.hitSubmit().click();
+		cp.enterAddressType().click();
+		cp.addressTypeselect().click();
+		cp.hitSubmit().click();
 		
 		
 		

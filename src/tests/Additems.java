@@ -77,17 +77,7 @@ catch (NoSuchElementException e){
 
 
 Checkout co = new Checkout();
-co.checkoutfromcart(driver);
-
-
-
-
-
-	
-	
-	
-	
-	
+	co.checkoutfromcart(driver);
 	
 	}	
 	

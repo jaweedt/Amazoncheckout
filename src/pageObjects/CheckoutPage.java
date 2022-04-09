@@ -1,19 +1,24 @@
 package pageObjects;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class CheckoutPage {
 	
-	
+	  public WebDriver driver;  
 	public CheckoutPage(WebDriver driver)
 	{
 		this.driver=driver;
 	}
 
-	   public WebDriver driver;  
+	    
 	By cart = By.id("nav-cart");
 	By checkout = By.name("proceedToRetailCheckout");
 	By fullName = By.id("address-ui-widgets-enterAddressFullName");
@@ -21,10 +26,12 @@ public class CheckoutPage {
 	By postal = By.id("address-ui-widgets-enterAddressPostalCode");
 	By address1 = By.id("address-ui-widgets-enterAddressLine1");
 	By address2 = By.id("address-ui-widgets-enterAddressLine2");
-	By addresstype = By.name("address-ui-widgets-addr-details-address-type-and-business-hours");
-	WebElement addressdrop = driver.findElement(addresstype);
-	Select addressDropdown = new Select(addressdrop);
-	By submit =  By.cssSelector("span[id='address-ui-widgets-form-submit-button-announce']");
+	By addresstype = By.id("address-ui-widgets-addr-details-address-type-and-business-hours");
+	By addTypeselect = By.xpath("//li/a[@data-value='RES']");
+	
+	By submit =  By.id("address-ui-widgets-form-submit-button");
+	
+	
 	
 	
 	public WebElement clickaddCart()
@@ -59,18 +66,29 @@ public class CheckoutPage {
 
 	public WebElement enterAddress2()
 	{
-		return driver.findElement(address1);
+		return driver.findElement(address2);
 	}
 
-	//public Select enterAddressType()
-	//{
-	//	return addressDropdown;
+	public WebElement enterAddressType()
+	{
+		return driver.findElement(addresstype);
+		
 
-	//}
+	}
+	
+	public WebElement addressTypeselect()
+	{
+		return driver.findElement(addTypeselect);
+		
+
+	}
 	public WebElement hitSubmit()
 	{
+		WebDriverWait w = new WebDriverWait(driver,Duration.ofSeconds(4));
+		w.until(ExpectedConditions.invisibilityOf(driver.findElement(addTypeselect)));
+			return w.until(ExpectedConditions.elementToBeClickable(driver.findElement(submit)));
 		
-		return driver.findElement(submit);
+		 
 	}
 
 	
