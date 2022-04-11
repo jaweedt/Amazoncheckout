@@ -12,13 +12,18 @@ public class Checkout extends base {
 	
 	
 	
+	public Checkout(WebDriver driver) {
+	
+		this.driver=driver;// TODO Auto-generated constructor stub
+	}
+
 	@BeforeTest	
 	public void initDriver()
 	{
 	 driver = driverInit();
 	}
 	
-	public void checkoutfromcart(WebDriver driver)
+	public void checkoutfromcart()
 	{
 		
 		CheckoutPage cp = new CheckoutPage(driver);

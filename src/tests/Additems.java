@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 import pageObjects.CheckoutPage;
 import pageObjects.HomePage;
 import pageObjects.SearchResultsPage;
-import pageObjects.loginPage;
+import pageObjects.LoginPage;
 import resources.base;
 
 public class Additems extends base {
@@ -47,7 +47,7 @@ public class Additems extends base {
 		Actions a = new Actions(driver);
 		
 		
-		for(int i=0;i<4;i++)
+		for(int i=0;i<1;i++)
 		{
 			
 			a.keyDown(Keys.CONTROL).build().perform();
@@ -76,8 +76,11 @@ catch (NoSuchElementException e){
 	}
 
 
-Checkout co = new Checkout();
-	co.checkoutfromcart(driver);
+Checkout co = new Checkout(driver);
+	co.checkoutfromcart();
+	
+	PaymentCheck pc = new PaymentCheck(driver);
+	pc.addCardDetails();
 	
 	}	
 	

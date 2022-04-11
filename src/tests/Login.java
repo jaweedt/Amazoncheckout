@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import pageObjects.loginPage;
+import pageObjects.LoginPage;
 import resources.base;
 
 public class Login extends base {
@@ -26,7 +26,7 @@ public class Login extends base {
 		
 		
 		
-		loginPage lp = new loginPage(driver);
+		LoginPage lp = new LoginPage(driver);
 		driver.get("https://www.amazon.in/");
 		lp.clickLogin().click();
 		lp.getUsername().sendKeys("jaweed.thahir@outlook.com");
